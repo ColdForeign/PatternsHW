@@ -2,187 +2,263 @@
 
 //windows
 
-void WindowsButton::show()
-{
-	std::cout << "this is windows batton\n";
-}
-
-void WindowsButton::use()
-{
-	std::cout << "we use windows batton\n";
-}
-
-void WindowsWindow::show()
-{
-	std::cout << "this is windows window\n";
-}
-
-void WindowsWindow::use()
-{
-	std::cout << "we use windows window\n";
-}
-
 void WindowsCursor::show()
 {
-	std::cout << "this is windows cursor\n";
+	SetColor(this->color);
+	std::cout << "[Windows] Cursor shown\n";
+	SetColor(White);
+
 }
 
 void WindowsCursor::use()
 {
-	std::cout << "we use window cursor\n";
+	SetColor(this->color);
+	std::cout << "[Windows] Cursor used\n";
+	SetColor(White);
+}
+
+void WindowsWindow::show()
+{
+	SetColor(this->color);
+	std::cout << "[Windows] Window shown\n";
+	SetColor(White);
+}
+
+void WindowsWindow::use()
+{
+	SetColor(this->color);
+	std::cout << "[Windows] Window used\n";
+	SetColor(White);
 }
 
 void WindowsMenu::show()
 {
-	std::cout << "this is windows menu\n";
+	SetColor(this->color);
+	std::cout << "[Windows] Menu shown\n";
+	SetColor(White);
 }
 
 void WindowsMenu::use()
 {
-	std::cout << "we use windows menu\n";
+	SetColor(this->color);
+	std::cout << "[Windows] Menu used\n";
+	SetColor(White);
 }
 
-Button* WindowsFactory::createButton()
+void WindowsButton::show()
 {
-	return new WindowsButton;
+	SetColor(this->color);
+	std::cout << "[Windows] Button shown\n";
+	SetColor(White);
 }
 
-Window* WindowsFactory::createWindow()
+void WindowsButton::use()
 {
-	return new WindowsWindow;
-}
-
-Menu* WindowsFactory::createMenu()
-{
-	return new WindowsMenu;
+	SetColor(this->color);
+	std::cout << "[Windows] Button used\n";
+	SetColor(White);
 }
 
 Cursor* WindowsFactory::createCursor()
 {
-	return new WindowsCursor;
+	Cursor* cursor = new WindowsCursor;
+	cursor->SetTextColor();
+	return cursor;
+}
+
+Window* WindowsFactory::createWindow()
+{
+	Window* window = new WindowsWindow;
+	window->SetTextColor();
+	return window;
+}
+
+Menu* WindowsFactory::createMenu()
+{
+	Menu* menu = new WindowsMenu;
+	menu->SetTextColor();
+	return menu;
+}
+
+Button* WindowsFactory::createButton()
+{
+	Button* button = new WindowsButton;
+	button->SetTextColor();
+	return button;
 }
 
 //linux
-
-void LinuxButton::show()
-{
-	std::cout << "this is linux batton\n";
-}
-
-void LinuxButton::use()
-{
-	std::cout << "we use linux batton\n";
-}
-
-void LinuxWindow::show()
-{
-	std::cout << "this is linux window\n";
-}
-
-void LinuxWindow::use()
-{
-	std::cout << "we use linux window\n";
-}
-
-void LinuxCursor::show()
-{
-	std::cout << "this is linux cursor\n";
-}
-
-void LinuxCursor::use()
-{
-	std::cout << "we use linux cursor\n";
-}
-
 void LinuxMenu::show()
 {
-	std::cout << "this is linux menu\n";
+	SetColor(this->color);
+	std::cout << "[Linux] Cursor shown\n";
+	SetColor(White);
 }
 
 void LinuxMenu::use()
 {
-	std::cout << "we use linux menu\n";
+	SetColor(this->color);
+	std::cout << "[Linux] Cursor used\n";
+	SetColor(White);
 }
 
-Button* LinuxFactory::createButton()
+void LinuxWindow::show()
 {
-	return new LinuxButton;
+	SetColor(this->color);
+	std::cout << "[Linux] Window shown\n";
+	SetColor(White);
 }
 
-Window* LinuxFactory::createWindow()
+void LinuxWindow::use()
 {
-	return new LinuxWindow;
+	SetColor(this->color);
+	std::cout << "[Linux] Window used\n";
+	SetColor(White);
 }
 
-Menu* LinuxFactory::createMenu()
+void LinuxCursor::show()
 {
-	return new LinuxMenu;
+	SetColor(this->color);
+	std::cout << "[Linux] Cursor shown\n";
+	SetColor(White);
+
+}
+
+void LinuxCursor::use()
+{
+	SetColor(this->color);
+	std::cout << "[Linux] Cursor used\n";
+	SetColor(White);
+
+}
+
+void LinuxButton::show()
+{
+	SetColor(this->color);
+	std::cout << "[Linux] Button shown\n";
+	SetColor(White);
+
+}
+
+void LinuxButton::use()
+{
+	SetColor(this->color);
+	std::cout << "[Linux] Button used\n";
+	SetColor(White);
+
 }
 
 Cursor* LinuxFactory::createCursor()
 {
-	return new LinuxCursor;
+	Cursor* cursor = new LinuxCursor;
+	cursor->SetTextColor(LightBlue);
+	return cursor;
+}
+
+Window* LinuxFactory::createWindow()
+{
+	Window* window = new LinuxWindow;
+	window->SetTextColor(LightBlue);
+	return window;
+}
+
+Menu* LinuxFactory::createMenu()
+{
+	Menu* menu = new LinuxMenu;
+	menu->SetTextColor(LightBlue);
+	return menu;
+}
+
+Button* LinuxFactory::createButton()
+{
+	Button* button = new LinuxButton;
+	button->SetTextColor(LightBlue);
+	return button;
 }
 
 //macos
 
-void MacOsButton::show()
+void MacOSCursor::show()
 {
-	std::cout << "this is macos batton\n";
+	SetColor(this->color);
+	std::cout << "[MacOS] Cursor shown\n";
+	SetColor(White);
 }
 
-void MacOsButton::use()
+void MacOSCursor::use()
 {
-	std::cout << "we use macos batton\n";
+	SetColor(this->color);
+	std::cout << "[MacOS] Cursor used\n";
+	SetColor(White);
 }
 
-void MacOsWindow::show()
+void MacOSWindow::show()
 {
-	std::cout << "this is macos window\n";
+	SetColor(this->color);
+	std::cout << "[MacOS] Window shown\n";
+	SetColor(White);
 }
 
-void MacOsWindow::use()
+void MacOSWindow::use()
 {
-	std::cout << "we use macos window\n";
+	SetColor(this->color);
+	std::cout << "[MacOS] Window used\n";
+	SetColor(White);
 }
 
-void MacOsCursor::show()
+void MacOSMenu::show()
 {
-	std::cout << "this is macos cursor\n";
+	SetColor(this->color);
+	std::cout << "[MacOS] Menu shown\n";
+	SetColor(White);
 }
 
-void MacOsCursor::use()
+void MacOSMenu::use()
 {
-	std::cout << "we use macos cursor\n";
+	SetColor(this->color);
+	std::cout << "[MacOS] Menu used\n";
+	SetColor(White);
 }
 
-void MacOsMenu::show()
+void MacOSButton::show()
 {
-	std::cout << "this is macos menu\n";
+	SetColor(this->color);
+	std::cout << "[MacOS] Button shown\n";
+	SetColor(White);
 }
 
-void MacOsMenu::use()
+void MacOSButton::use()
 {
-	std::cout << "we use macos menu\n";
+	SetColor(this->color);
+	std::cout << "[MacOS] Button used\n";
+	SetColor(White);
 }
 
-Button* MacOsFactory::createButton()
+Cursor* MacOSFactory::createCursor()
 {
-	return new MacOsButton;
+	Cursor* cursor = new MacOSCursor;
+	cursor->SetTextColor(LightGreen);
+	return cursor;
 }
 
-Window* MacOsFactory::createWindow()
+Window* MacOSFactory::createWindow()
 {
-	return new MacOsWindow;
+	Window* window = new MacOSWindow;
+	window->SetTextColor(LightGreen);
+	return window;
 }
 
-Menu* MacOsFactory::createMenu()
+Menu* MacOSFactory::createMenu()
 {
-	return new MacOsMenu;
+	Menu* menu = new MacOSMenu;
+	menu->SetTextColor(LightGreen);
+	return menu;
 }
 
-Cursor* MacOsFactory::createCursor()
+Button* MacOSFactory::createButton()
 {
-	return new MacOsCursor;
+	Button* button = new MacOSButton;
+	button->SetTextColor(LightGreen);
+	return button;
+	return new MacOSButton;
 }
-

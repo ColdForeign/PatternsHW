@@ -1,21 +1,29 @@
 #pragma once
 #include <iostream>
+#include "tcolor.h";
+using namespace ConsoleColors;
 
 enum class OSType
 {
-	NONE,
 	WINDOWS,
 	LINUX,
 	MACOS,
+	NONE
 };
 
 class Object abstract 
 {
 public:
 	virtual void show() = 0;
+	void SetTextColor(ConsoleColor color = ConsoleColor::Cyan) 
+	{
+		this->color = color;
+	}
+protected:
+	ConsoleColor color;
 };
 
-class Button abstract : public Object
+class Cursor abstract : public Object
 {
 public:
 	virtual void use() = 0;
@@ -27,44 +35,37 @@ public:
 	virtual void use() = 0;
 };
 
-class Cursor abstract : public Object
-{
-public:
-	virtual void use() = 0;
-};
-
 class Menu abstract : public Object
 {
 public:
 	virtual void use() = 0;
 };
 
-class Factory abstract
+class Button abstract : public Object
 {
 public:
-	virtual Button* createButton() = 0;
-	virtual Window* createWindow() = 0;
-	virtual Menu* createMenu() = 0;
+	virtual void use() = 0;
+};
+
+class AbstractFactory abstract
+{
+public:
 	virtual Cursor* createCursor() = 0;
+	virtual Menu* createMenu() = 0;
+	virtual Window* createWindow() = 0;
+	virtual Button* createButton() = 0;
 };
 
 //windows
-
-class WindowsButton : public Button
+class WindowsCursor : public Cursor
 {
 public:
 	void show() override;
 	void use() override;
+	
 };
 
 class WindowsWindow : public Window
-{
-public:
-	void show() override;
-	void use() override;
-};
-
-class WindowsCursor : public Cursor
 {
 public:
 	void show() override;
@@ -78,32 +79,34 @@ public:
 	void use() override;
 }; 
 
-class WindowsFactory : public Factory
+class WindowsButton : public Button
 {
 public:
-	Button* createButton() override;
+	void show() override;
+	void use() override;
+};
+
+class WindowsFactory : public AbstractFactory
+{
+public:
+
+	Cursor* createCursor() override;
 	Window* createWindow() override;
 	Menu* createMenu() override;
-	Cursor* createCursor() override;
+	Button* createButton() override;
+
 };
 
 //linux
-
-class LinuxButton : public Button
+class LinuxCursor : public Cursor
 {
 public:
 	void show() override;
 	void use() override;
+
 };
 
 class LinuxWindow : public Window
-{
-public:
-	void show() override;
-	void use() override;
-};
-
-class LinuxCursor : public Cursor
 {
 public:
 	void show() override;
@@ -117,51 +120,58 @@ public:
 	void use() override;
 };
 
-class LinuxFactory : public Factory
+class LinuxButton : public Button
 {
 public:
-	Button* createButton() override;
+	void show() override;
+	void use() override;
+};
+
+class LinuxFactory : public AbstractFactory
+{
+public:
+	Cursor* createCursor() override;
 	Window* createWindow() override;
 	Menu* createMenu() override;
-	Cursor* createCursor() override;
+	Button* createButton() override;
 };
 
 //macos
 
-class MacOsButton : public Button
+class MacOSButton : public Button
 {
 public:
 	void show() override;
 	void use() override;
 };
 
-class MacOsWindow : public Window
+class MacOSWindow : public Window
 {
 public:
 	void show() override;
 	void use() override;
 };
 
-class MacOsCursor : public Cursor
+class MacOSCursor : public Cursor
 {
 public:
 	void show() override;
 	void use() override;
 };
 
-class MacOsMenu : public Menu
+class MacOSMenu : public Menu
 {
 public:
 	void show() override;
 	void use() override;
 };
 
-class MacOsFactory : public Factory
+class MacOSFactory : public AbstractFactory
 {
 public:
-	Button* createButton() override;
+	Cursor* createCursor() override;
 	Window* createWindow() override;
 	Menu* createMenu() override;
-	Cursor* createCursor() override;
+	Button* createButton() override;
 };
 

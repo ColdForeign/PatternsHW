@@ -1,32 +1,41 @@
 #include "AbstractFactory.h"
 #include "tinyxml2.h"
-
+#include <vector>
+using std::vector;
 #pragma warning(disable : 26812)
 
 OSType getOSTypeFromFile(std::string file);
 namespace xml = tinyxml2;
 
-#define CHECK_WINDOWS (type == "windows" || type == "Windows" || type == "WINDOWS" || type == "WIN" || type == "win")
-#define CHECK_LINUX (type == "linux" || type == "Linux" || type == "LINUX")
-#define CHECK_MACOS (type == "mac" || type == "macos" || type == "MACOS" || type == "MAC" || type == "MACINTOSH")
+#define CHECK_WINDOWS (type == "Windows" || type == "windows" || type == "WINDOWS" || type == "win" || type == "WIN")
+#define CHECK_LINUX (type == "Linux" || type == "LINUX" || type == "linux")
+#define CHECK_MACOS (type == "mac" || type == "MACOS" || type == "macos" || type == "macOS" )
 
 int main()
 {
-	Factory* factory = nullptr;
+	AbstractFactory* factory = nullptr;
 
+	Cursor* cursor = nullptr;
 	Menu* menu = nullptr;
 	Window* window = nullptr;
-	Cursor* cursor = nullptr;
 	Button* button = nullptr;
 
 	OSType type = getOSTypeFromFile("os.xml");
 
 	switch (type)
 	{
-	case OSType::WINDOWS:	factory = new WindowsFactory;			break;
-	case OSType::LINUX:		factory = new LinuxFactory;				break;
-	case OSType::MACOS:		factory = new MacOsFactory;				break;
-	case OSType::NONE:		std::cout << "eror: file not found\n";	break;
+	case OSType::WINDOWS:
+		factory = new WindowsFactory;
+		break;
+	case OSType::LINUX:
+		factory = new LinuxFactory;
+		break;
+	case OSType::MACOS:
+		factory = new MacOSFactory;
+		break;
+	case OSType::NONE:
+		std::cout << "Error: file not found\n";
+		break;
 	}
 
 	if (factory != nullptr)
@@ -41,19 +50,20 @@ int main()
 	factory = nullptr;
 
 	size_t size = 4;
-	Object** objects = new Object * [size] { menu, window, cursor, button };
+	vector <Object*> objects = { menu , window, cursor, button };
 
 	for (size_t i = 0; i < size; i++)
 		if (objects[i] != nullptr)
 			objects[i]->show();
+	std::cout << std::endl;
 
-	for (size_t i = 0; i < size; i++)
-	{
-		delete objects[i];
-		objects[i] = nullptr;
-	}
+	menu->use();
+	window->use();
+	cursor->use();
+	button->use();
 
-	delete[] objects;
+	objects.clear();
+
 
 	return 0;
 }
@@ -69,17 +79,21 @@ OSType getOSTypeFromFile(std::string file)
 		return OSType::NONE;
 
 	if (doc.FirstChildElement("settings") == nullptr)
-		return OSType::NONE;;
+		return OSType::NONE;
 
 	xml::XMLElement* element = doc.FirstChildElement("settings");
+	if (element == nullptr)
+		return OSType::NONE;
 
-	if (element->FirstChildElement("os") == nullptr)
-		return OSType::NONE;;
+	if (element->FirstChildElement("OS") == nullptr)
+		return OSType::NONE;
 
-	element = element->FirstChildElement("os");
+	element = element->FirstChildElement("OS");
+	if (element == nullptr)
+		return OSType::NONE;
 
 	if (element->FindAttribute("type") == nullptr)
-		return OSType::NONE;;
+		return OSType::NONE;
 
 	std::string type = element->FindAttribute("type")->Value();
 

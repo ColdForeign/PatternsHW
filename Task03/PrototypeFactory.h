@@ -22,7 +22,7 @@ public:
 		this->prototypes =
 		{ new DesertEagle(),   new Makarov(),
 		new Mac10(),   new DoubleMac10(),
-		new GrenadeLauncher(),   new TommyGun(), };
+		new GrenadeLauncher(),   new TommyGun() };
 	}
 	Weapon* createWeapon(Weapons typePlayer)
 	{
