@@ -139,10 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Builder.cpp" />
-    <ClCompile Include="Cake.cpp" />
     <ClCompile Include="CakeBuilder.cpp" />
-    <ClCompile Include="Director.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>

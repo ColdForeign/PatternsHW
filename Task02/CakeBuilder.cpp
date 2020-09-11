@@ -1,32 +1,31 @@
 #include "CakeBuilder.h"
 
-void CakeBuilder::setFloure()
+void CakeBuilder::setDough()
 {
-	Builder::cake->setPart(0, "white");
+	this->cake->setPart(0, "nut");
 }
 
-void CakeBuilder::setFilling()
+void CakeBuilder::setÑream()
 {
-	Builder::cake->setPart(1, "chockolate");
+	this->cake->setPart(1, "creamy chocolate");
 }
 
-void CakeBuilder::setEtc()
+void CakeBuilder::setDecor()
 {
-	Builder::cake->setPart(2, "strawberry");
-
+	this->cake->setPart(2, "candied fruit");
 }
 
-void PunkcakeBuilder::setFloure()
+void PunkcakeBuilder::setDough()
 {
-	Builder::cake->setPart(0, "buisquits");
+	this->cake->setPart(0, "buisquits");
 }
 
-void PunkcakeBuilder::setFilling()
+void PunkcakeBuilder::setÑream()
 {
-	Builder::cake->setPart(1, "beze");
+	this->cake->setPart(1, "honey");
 }
 
-void PunkcakeBuilder::setEtc()
+void PunkcakeBuilder::setDecor()
 {
-	Builder::cake->setPart(2, "pineapple");
+	this->cake->setPart(2, "pineapple");
 }

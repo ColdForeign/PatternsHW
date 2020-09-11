@@ -3,15 +3,34 @@
 #include <iostream>
 class Builder abstract
 {
-public:
-	Builder();
-	virtual void setFloure() = 0;
-	virtual void setFilling() = 0;
-	virtual void setEtc() = 0;
-	Cake* getCake();
-	~Builder();
+protected:
 	Cake* cake;
+public:
+	Builder()
+	{
+		this->cake = new Cake();
+	}
 
+	virtual void setDough() = 0;
+	virtual void setÑream() = 0;
+	virtual void setDecor() = 0;
+
+	void reset()
+	{
+		this->cake = new Cake();
+	}
+
+	Cake* getProduct()
+	{
+		Cake* result = this->cake;
+		this->reset();
+		return result;
+	}
+
+	~Builder()
+	{
+		delete this->cake;
+	}
 };
 
 

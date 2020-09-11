@@ -1,11 +1,31 @@
 #pragma once
 #include "Builder.h"
+
 class Director
 {
-	Builder* build;
+private:
+	Builder* builder;
 public:
-	Director();
-	Director(Builder* build);
-	Cake* Create();
+	Director()
+	{
+		this->builder = nullptr;
+	}
+
+	Director(Builder* build) 
+	{
+		this->builder = build;
+	}
+
+	Cake* Create()
+	{
+		if (this->builder != nullptr)
+		{
+			this->builder-> setDough();
+			this->builder->setÑream();
+			this->builder->setDecor();
+			return this->builder->getProduct();
+		}
+		
+	}
 };
 

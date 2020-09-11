@@ -1,6 +1,6 @@
-#include <iostream>
 #include "CakeBuilder.h"
 #include "Director.h"
+
 int main()
 {
 	CakeBuilder builder;
@@ -8,7 +8,9 @@ int main()
 	size_t choose;
 	do
 	{
-		cout << "1: cake , 2 punkcake, 0: exit\n";
+		cout << "1 - Cake \n2 - Punkcake \n0 - exit\n\n";
+		cout << "Enter your choice\n";
+
 		std::cin >> choose;
 		switch (choose)
 		{
@@ -23,7 +25,7 @@ int main()
 			delete director;
 			break;
 		case 0:
-			cout << "bb\n";
+			cout << "Exit...\n";
 			break;
 		default:
 			cout << "Wrong choise\n";

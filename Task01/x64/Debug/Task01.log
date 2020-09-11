@@ -1,6 +1,0 @@
-﻿  AbstractFactory.cpp
-C:\Users\ColdForeign\source\c#\Homework\Task01\AbstractFactory.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  main.cpp
-C:\Users\ColdForeign\source\c#\Homework\Task01\AbstractFactory.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  Generating Code...
-  Task01.vcxproj -> C:\Users\ColdForeign\source\c#\Homework\x64\Debug\Task01.exe

@@ -2,13 +2,16 @@
 #include "Builder.h"
 class CakeBuilder : public Builder
 {
- 	void setFloure() override;
-    void setFilling() override;
-    void setEtc() override;
+public:
+ 	void setDough() override;
+    void set—ream() override;
+    void setDecor() override;
 };
+
 class PunkcakeBuilder : public Builder
 {
-    void setFloure() override;
-    void setFilling() override;
-    void setEtc() override;
+public:
+    void setDough() override;
+    void set—ream() override;
+    void setDecor() override;
 };
